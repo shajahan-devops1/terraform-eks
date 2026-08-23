@@ -18,11 +18,11 @@ module "aws-eks-SG-rules" {
   environment = var.environment
 }
 
-# module "aws-eks-cluster" {
-#   source      = "../../modules/03-eks"
-#   project     = var.project
-#   environment = var.environment
-# }
+module "aws-eks-cluster" {
+  source      = "../../modules/03-eks"
+  project     = var.project
+  environment = var.environment
+}
 
 # module "aws-eks-bastion" {
 #   source      = "../../modules/04-bastion"
