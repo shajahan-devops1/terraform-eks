@@ -5,9 +5,11 @@ module "aws-eks-VPC" {
 }
 
 module "aws-eks-SG" {
-    source = "../../modules/02-1-SG"
-    project = var.project
-    environment = var.environment
+  source = "../../modules/02-sg"
+
+  project     = var.project
+  environment = var.environment
+  vpc_id = module.aws-eks-VPC.vpc_id
 }
 
 module "aws-eks-SG-rules" {
