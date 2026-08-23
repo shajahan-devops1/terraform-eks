@@ -12,11 +12,11 @@ module "aws-eks-SG" {
   sg_name     = "${var.project}-${var.environment}-sg"
 }
 
-# module "aws-eks-SG-rules" {
-#   source      = "../../modules/02-sg"
-#   project     = var.project
-#   environment = var.environment
-# }
+module "aws-eks-SG-rules" {
+  source      = "../../modules/02-sg"
+  project     = var.project
+  environment = var.environment
+}
 
 # module "aws-eks-cluster" {
 #   source      = "../../modules/03-eks"
