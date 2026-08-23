@@ -5,6 +5,12 @@ module "aws-eks-VPC" {
 }
 
 module "aws-eks-SG" {
+    source = "../../modules/02-1-SG"
+    project = var.project
+    environment = var.environment
+}
+
+module "aws-eks-SG-rules" {
     source = "../../modules/02-sg"
     project = var.project
     environment = var.environment
