@@ -1,21 +1,27 @@
 variable "project" {
-  default = "roboshop"
+  type = string
 }
 
 variable "environment" {
-  default = "dev"
+  type = string
+}
+
+variable "vpc_id" {
+  description = "VPC ID for the security group"
+  type        = string
 }
 
 variable "sg_names" {
-  type = list(any)
+  type = list(string)
+
   default = [
-    "mongodb", "redis", "mysql", "rabbitmq",
-    #"catalogue", "user", "cart", "shipping", "payment",
-    #"backend_alb",
-    #"frontend",
-    "public_alb",
-    "bastion",
     "eks_control_plane",
     "eks_node",
+    "mongodb",
+    "redis",
+    "mysql",
+    "rabbitmq",
+    "public_alb",
+    "bastion"
   ]
 }

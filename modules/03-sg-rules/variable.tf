@@ -1,23 +1,9 @@
 variable "project" {
-  type = string
+  default = "roboshop"
 }
 
 variable "environment" {
-  type = string
-}
-
-variable "sg_name" {
-  type = string
-}
-
-variable "vpc_id" {
-  description = "VPC ID for the security group"
-  type        = string
-}
-
-variable "sg_tags" {
-  type    = map(any)
-  default = {}
+  default = "dev"
 }
 
 variable "sg_names" {
@@ -31,7 +17,5 @@ variable "sg_names" {
     "bastion",
     "eks_control_plane",
     "eks_node",
-    "jenkins", "jenkins_agent", "sonar"
-    #"vpn"
   ]
 }
