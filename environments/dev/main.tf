@@ -4,13 +4,13 @@ module "aws-eks-VPC" {
   environment = var.environment
 }
 
-# module "aws-eks-SG" {
-#   source      = "../../modules/02-SG"
-#   project     = var.project
-#   environment = var.environment
-#   vpc_id      = module.aws-eks-VPC.vpc_id
-#   sg_name     = "${var.project}-${var.environment}-sg"
-#   depends_on  = [module.aws-eks-SG]
+module "aws-eks-SG" {
+  source      = "../../modules/02-SG"
+  project     = var.project
+  environment = var.environment
+  vpc_id      = module.aws-eks-VPC.vpc_id
+  sg_name     = "${var.project}-${var.environment}-sg"
+  depends_on  = [module.aws-eks-SG]
 # }
 
 # module "aws-eks-SG-rules" {
