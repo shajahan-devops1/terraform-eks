@@ -5,12 +5,22 @@ module "aws-eks-VPC" {
 }
 
 module "aws-eks-SG" {
-  source      = "../../modules/02-SG"
+  source = "../../modules/02-sg"
+
   project     = var.project
   environment = var.environment
   vpc_id      = module.aws-eks-VPC.vpc_id
-  sg_name     = "${var.project}-${var.environment}-sg"
-  depends_on  = [module.aws-eks-SG]
+
+  sg_names = [
+    "eks_control_plane",
+    "eks_node",
+    "mongodb",
+    "redis",
+    "mysql",
+    "rabbitmq",
+    "public_alb",
+    "bastion"
+  ]
 }
 
 # module "aws-eks-SG-rules" {
