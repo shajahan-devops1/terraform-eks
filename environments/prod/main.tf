@@ -8,6 +8,7 @@ module "eks-SG" {
   source      = "../../modules/02-sg"
   project     = var.project
   environment = var.environment
+  vpc_id      = module.eks-VPC.vpc_id
 }
 
 module "aws-eks-cluster" {

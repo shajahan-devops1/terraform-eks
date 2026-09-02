@@ -9,18 +9,18 @@ module "aws-eks-SG" {
 
   project     = var.project
   environment = var.environment
-  vpc_id      = module.aws-eks-VPC.vpc_id
+  # vpc_id      = module.aws-eks-VPC.vpc_id
 
-  sg_names = [
-    "eks_control_plane",
-    "eks_node",
-    "mongodb",
-    "redis",
-    "mysql",
-    "rabbitmq",
-    "public_alb",
-    "bastion"
-  ]
+  # sg_names = [
+  #   "eks_control_plane",
+  #   "eks_node",
+  #   "mongodb",
+  #   "redis",
+  #   "mysql",
+  #   "rabbitmq",
+  #   "public_alb",
+  #   "bastion"
+  # ]
 }
 
 module "aws-eks-SG-rules" {
@@ -34,7 +34,6 @@ module "aws-eks-cluster" {
   source      = "../../modules/04-eks"
   project     = var.project
   environment = var.environment
-  depends_on  = [module.aws-eks-VPC, module.aws-eks-SG, module.aws-eks-SG-rules]
 }
 
 # module "aws-eks-bastion" {
