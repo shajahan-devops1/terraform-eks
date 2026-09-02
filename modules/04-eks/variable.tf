@@ -7,7 +7,7 @@ variable "environment" {
 }
 
 variable "eks_version" {
-    default = "1.34"
+    default = "1.36"
 }
 
 variable "enable_blue" {
@@ -15,13 +15,13 @@ variable "enable_blue" {
 }
 
 variable "blue_version" {
-    default = "1.34"
+    default = "1.36"
 }
 
-# variable "enable_green" {
-#     default = false
-# }
+variable "enable_green" {
+    default = false
+}
 
-# variable "green_version" {
-#     default = "1.35"
-# }
+variable "green_version" {
+    default = "1.35"
+}

@@ -1,13 +1,8 @@
-resource "aws_security_group" "sg" {
-  for_each = toset(var.sg_names)
-
-  name        = "${var.project}-${var.environment}-${each.key}"
-  description = "Security group for ${each.key}"
-  vpc_id      = var.vpc_id
-
-  tags = {
-    Name        = "${var.project}-${var.environment}-${each.key}"
-    Project     = var.project
-    Environment = var.environment
-  }
+module "sg" {
+    count = length(var.sg_names)
+    source = "git::https://github.com/daws-90s/terraform-aws-sg.git?ref=main"
+    project = var.project
+    environment = var.environment
+    vpc_id = local.vpc_id
+    sg_name = replace(var.sg_names[count.index], "_", "-")
 }
