@@ -9,6 +9,7 @@ module "aws-eks-SG" {
 
   project     = var.project
   environment = var.environment
+  depends_on  = [module.aws-eks-VPC]
   # vpc_id      = module.aws-eks-VPC.vpc_id
 
   # sg_names = [
@@ -34,10 +35,12 @@ module "aws-eks-cluster" {
   source      = "../../modules/04-eks"
   project     = var.project
   environment = var.environment
+  depends_on  = [module.aws-eks-SG-rules]
 }
 
-# module "aws-eks-bastion" {
-#   source      = "../../modules/04-bastion"
-#   project     = var.project
-#   environment = var.environment
-# }
+module "aws-eks-bastion" {
+  source      = "../../modules/05-bastion"
+  project     = var.project
+  environment = var.environment
+  # depends_on  = [module.aws-eks-cluster]
+}
