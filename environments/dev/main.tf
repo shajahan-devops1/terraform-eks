@@ -44,3 +44,10 @@ module "aws-eks-bastion" {
   environment = var.environment
   # depends_on  = [module.aws-eks-cluster]
 }
+
+module "aws-eks-access-entries" {
+  source      = "../../modules/06-access-entries"
+  project     = var.project
+  environment = var.environment
+  depends_on  = [module.aws-eks-bastion, module.aws-eks-cluster]
+}
